@@ -16,44 +16,44 @@
       evenlySpacedGrid:rowPadding="10dp" >
 
       <FrameLayout
-          android:layout_width="120dp"
-          android:layout_height="120dp"
+          android:layout_width="92dp"
+          android:layout_height="92dp"
           android:background="#333333" >
       </FrameLayout>
 
       <FrameLayout
-          android:layout_width="120dp"
-          android:layout_height="120dp"
+          android:layout_width="92dp"
+          android:layout_height="92dp"
           android:background="#333333" >
       </FrameLayout>
 
       <FrameLayout
-          android:layout_width="120dp"
-          android:layout_height="120dp"
+          android:layout_width="92dp"
+          android:layout_height="92dp"
           android:background="#333333" >
       </FrameLayout>
       
        <FrameLayout
-          android:layout_width="120dp"
-          android:layout_height="120dp"
+          android:layout_width="92dp"
+          android:layout_height="92dp"
           android:background="#333333" >
       </FrameLayout>
       
         <FrameLayout
-          android:layout_width="120dp"
-          android:layout_height="120dp"
+          android:layout_width="92dp"
+          android:layout_height="92dp"
           android:background="#333333" >
       </FrameLayout>
       
          <FrameLayout
-          android:layout_width="120dp"
-          android:layout_height="120dp"
+          android:layout_width="92dp"
+          android:layout_height="92dp"
           android:background="#333333" >
       </FrameLayout>
       
           <FrameLayout
-          android:layout_width="120dp"
-          android:layout_height="120dp"
+          android:layout_width="92dp"
+          android:layout_height="92dp"
           android:background="#333333" >
       </FrameLayout>
 

@@ -65,6 +65,7 @@ public class EvenlySpacedGridLayout extends ViewGroup {
 			height = Math.min(heightSize, desiredHeight);
 		} else {
 			int numElems = getVisibleElemCount();
+			innerWidth = width - getPaddingLeft() - getPaddingRight();
 			if (numElems > 0) {
 				height = 0;
 				List<View> elems = getVisibleElems();
@@ -77,7 +78,7 @@ public class EvenlySpacedGridLayout extends ViewGroup {
 					elemWidth = 10;
 				}
 				int elemHeight = elems.get(0).getMeasuredHeight();
-				int numCols = width / elemWidth;
+				int numCols = innerWidth / elemWidth;
 				int numRows = (numElems / numCols);
 				if (numElems % numCols != 0) {
 					numRows++;
@@ -103,6 +104,7 @@ public class EvenlySpacedGridLayout extends ViewGroup {
 		if (numElems > 0) {
 			List<View> elems = getVisibleElems();
 			int width = getMeasuredWidth();
+			int innerWidth = width - getPaddingLeft() - getPaddingRight();
 			int elemWidth = elems.get(0).getMeasuredWidth();
 			if (elemWidth == 0) {
 				elemWidth = 10;
@@ -111,8 +113,8 @@ public class EvenlySpacedGridLayout extends ViewGroup {
 			if (elemHeight == 0) {
 				elemHeight = 10;
 			}
-			int numCols = width / elemWidth;
-			int extraSpace = width % elemWidth;
+			int numCols = innerWidth / elemWidth;
+			int extraSpace = innerWidth % elemWidth;
 
 			if (numCols > numElems) {
 				extraSpace += (numCols - numElems) * elemWidth;
@@ -126,7 +128,7 @@ public class EvenlySpacedGridLayout extends ViewGroup {
 
 				final View child = elems.get(i);
 
-				int childLeft = left + ((col * elemWidth) + (col * spacing) + (spacing / 2));
+				int childLeft = left + getPaddingLeft() + ((col * elemWidth) + (col * spacing) + (spacing / 2));
 				int childTop = getTopPaddingOffset();
 				if (fixedVerticalSpacing) {
 					childTop += (row * elemHeight) + (row * rowPadding);
