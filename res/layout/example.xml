@@ -13,8 +13,12 @@
       android:layout_alignParentLeft="true"
       android:layout_alignParentTop="true"
       android:background="#000000"
-      evenlySpacedGrid:rowPadding="10dp" >
+      evenlySpacedGrid:rowPadding="10dp"
+      evenlySpacedGrid:maxSpacing="1.2" >
 
+      <!-- maxSpacing above is a float: 1 means 1 times the width of an item. Set it to 0 for no maximum. -->
+      
+      
       <FrameLayout
           android:layout_width="92dp"
           android:layout_height="92dp"

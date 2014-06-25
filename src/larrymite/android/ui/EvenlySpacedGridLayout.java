@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 public class EvenlySpacedGridLayout extends ViewGroup {
 
 	int rowPadding;
+	float maxSpacing;
 
 	public EvenlySpacedGridLayout(Context context) {
 		super(context);
@@ -31,6 +32,9 @@ public class EvenlySpacedGridLayout extends ViewGroup {
 		TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.EvenlySpacedGrid, 0, 0);
 		try {
 			rowPadding = (int) ta.getDimension(R.styleable.EvenlySpacedGrid_rowPadding, 0);
+			maxSpacing = (float) ta.getFloat(R.styleable.EvenlySpacedGrid_maxSpacing, 1f);
+			
+			
 		} finally {
 			ta.recycle();
 		}
@@ -84,8 +88,8 @@ public class EvenlySpacedGridLayout extends ViewGroup {
 					numRows++;
 				}
 				height = (numRows * elemHeight) + ((numRows - 1) * rowPadding);
-				height += getTopPaddingOffset();
-				height += getBottomPaddingOffset();
+				height += getPaddingTop();
+				height += getPaddingBottom();
 			} else {
 				height = desiredHeight;
 			}
@@ -121,7 +125,11 @@ public class EvenlySpacedGridLayout extends ViewGroup {
 			}
 
 			int spacing = extraSpace / Math.min(numCols, numElems);
-
+			
+			if (maxSpacing > 0) {
+				spacing = Math.min(spacing, (int)(maxSpacing * elemWidth));
+			}
+			
 			for (int i = 0; i < numElems; i++) {
 				int col = i % numCols;
 				int row = i / numCols;
@@ -129,7 +137,7 @@ public class EvenlySpacedGridLayout extends ViewGroup {
 				final View child = elems.get(i);
 
 				int childLeft = left + getPaddingLeft() + ((col * elemWidth) + (col * spacing) + (spacing / 2));
-				int childTop = getTopPaddingOffset();
+				int childTop = getPaddingTop();
 				if (fixedVerticalSpacing) {
 					childTop += (row * elemHeight) + (row * rowPadding);
 

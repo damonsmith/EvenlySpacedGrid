@@ -2,5 +2,6 @@
 <resources>
 	<declare-styleable name="EvenlySpacedGrid">
 	    <attr name="rowPadding" format="dimension"></attr>
+	    <attr name="maxSpacing" format="float"></attr>
 	</declare-styleable>
 </resources>
