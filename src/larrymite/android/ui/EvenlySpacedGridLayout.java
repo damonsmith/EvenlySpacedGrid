@@ -9,6 +9,14 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
 
+/**
+ * This is an Android custom view that arranges it's child elements into an evenly spaced grid.
+ * It measures the size of it's children (assumes they're all the same width) and then spaces
+ * them out so that they are in even columns and wrapped to fit the size of this view.
+ * 
+ * @author Damon Smith (damon@larrymite.com.au)
+ *
+ */
 public class EvenlySpacedGridLayout extends ViewGroup {
 
 	int rowPadding;
@@ -69,7 +77,7 @@ public class EvenlySpacedGridLayout extends ViewGroup {
 			height = Math.min(heightSize, desiredHeight);
 		} else {
 			int numElems = getVisibleElemCount();
-			innerWidth = width - getPaddingLeft() - getPaddingRight();
+			innerWidth = getContentWidth(width);
 			if (numElems > 0) {
 				height = 0;
 				List<View> elems = getVisibleElems();
@@ -107,8 +115,7 @@ public class EvenlySpacedGridLayout extends ViewGroup {
 
 		if (numElems > 0) {
 			List<View> elems = getVisibleElems();
-			int width = getMeasuredWidth();
-			int innerWidth = width - getPaddingLeft() - getPaddingRight();
+			int innerWidth = getContentWidth(getMeasuredWidth());
 			int elemWidth = elems.get(0).getMeasuredWidth();
 			if (elemWidth == 0) {
 				elemWidth = 10;
@@ -136,7 +143,7 @@ public class EvenlySpacedGridLayout extends ViewGroup {
 
 				final View child = elems.get(i);
 
-				int childLeft = left + getPaddingLeft() + ((col * elemWidth) + (col * spacing) + (spacing / 2));
+				int childLeft = getPaddingLeft() + ((col * elemWidth) + (col * spacing) + (spacing / 2));
 				int childTop = getPaddingTop();
 				if (fixedVerticalSpacing) {
 					childTop += (row * elemHeight) + (row * rowPadding);
@@ -172,6 +179,11 @@ public class EvenlySpacedGridLayout extends ViewGroup {
 		}
 
 		return visibleElems;
+	}
+	
+	
+	private int getContentWidth(int width) {
+		return width - getPaddingLeft() - getPaddingRight();
 	}
 
 }
