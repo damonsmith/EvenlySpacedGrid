@@ -1,4 +1,4 @@
-package larrymite.android.ui;
+package io.lry.ui;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +8,8 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
+
+import larrymite.android.ui.R;
 
 /**
  * This is an Android custom view that arranges it's child elements into an evenly spaced grid.
